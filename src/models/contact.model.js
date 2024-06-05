@@ -1,6 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import Jwt from "jsonwebtoken";
-import bcrypt from 'bcrypt';
 
 const contactSchema = new Schema(
     {
@@ -8,25 +6,27 @@ const contactSchema = new Schema(
             type: String,
             required: true,
             trim: true,
-            index: true,
         },
         email: {
             type: String,
             required: true,
-            unique: true,
-            lowercase: true,
             trim: true,
+            lowercase: true,
         },
         phone: {
-            type: Number,
-            required: true
+            type: String,
+            required: true,
+            trim: true,
         },
         message: {
             type: String,
-            required: true
+            required: true,
+            trim: true,
         },
     },
     {
         timestamps: true,
     }
-)
+);
+
+export const Contact = mongoose.model("Contact", contactSchema);
