@@ -1,1 +1,1 @@
-export const DB_NAME = "cardeals"
+export const DB_NAME = "nexsoit"
