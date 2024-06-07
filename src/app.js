@@ -18,17 +18,19 @@ app.use(cookieParser())
 
 //routes import
 import userRouter from './routes/user.routes.js'
+import contactRouter from './routes/contact.routes.js'
+
 
 
 
 
 //routes declaration
 app.use("/api/v1/users", userRouter)
-
+app.use("/api/v1/contact", contactRouter)
 
 // New root route for Vercel deployment
 app.get("/", (req, res) => {
-    res.send("Nexsoit Server is running on Vercel!");
+    res.send("Server is running on Vercel!");
 });
 
 
