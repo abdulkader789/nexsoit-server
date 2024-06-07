@@ -5,6 +5,6 @@ import { verifyJWT } from "../middlewares/auth.middleware.js";
 const router = Router();
 
 // Route to create a new contact
-router.route("/create-contact").post(verifyJWT,createContact)
+router.route("/create-contact").post(createContact)
 
 export default router;
