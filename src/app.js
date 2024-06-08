@@ -2,11 +2,9 @@ import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
 import connectDB from './db/connect.js';
-import { fileURLToPath } from "url"; // Import fileURLToPath from the 'url' module
-import { dirname } from "path"; // Import dirname from the 'path' module
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+
+
 const app = express()
 
 app.use(cors({
