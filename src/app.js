@@ -2,7 +2,11 @@ import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
 import connectDB from './db/connect.js';
+import { fileURLToPath } from "url"; // Import fileURLToPath from the 'url' module
+import { dirname } from "path"; // Import dirname from the 'path' module
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const app = express()
 
 app.use(cors({
@@ -12,7 +16,7 @@ app.use(cors({
 
 app.use(express.json({limit: "16kb"}))
 app.use(express.urlencoded({extended: true, limit: "16kb"}))
-app.use(express.static("public"))
+app.use(express.static('../public'));
 app.use(cookieParser())
 
 
@@ -28,14 +32,10 @@ import contactRouter from './routes/contact.routes.js'
 // app.use("/api/v1/users", userRouter)
 app.use("/api/v1/contact", contactRouter)
 
-// Serve static files (HTML, CSS)
-app.use(express.static(path.join(__dirname, "../public")));
-
-// Define route for "/"
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public", "index.html"));
-});
-
+// New root route for Vercel deployment
+// app.get("/", (req, res) => {
+//     res.send("Server is running on Vercel!");
+// });
 
 // http://localhost:8000/api/v1/users/register
 
