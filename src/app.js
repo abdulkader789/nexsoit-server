@@ -3,9 +3,8 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 import connectDB from './db/connect.js';
 
-
-
 const app = express()
+app.use(express.static("public"))
 
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
@@ -14,7 +13,6 @@ app.use(cors({
 
 app.use(express.json({limit: "16kb"}))
 app.use(express.urlencoded({extended: true, limit: "16kb"}))
-app.use(express.static('../public'));
 app.use(cookieParser())
 
 
@@ -31,9 +29,10 @@ import contactRouter from './routes/contact.routes.js'
 app.use("/api/v1/contact", contactRouter)
 
 // New root route for Vercel deployment
-// app.get("/", (req, res) => {
-//     res.send("Server is running on Vercel!");
-// });
+app.get("/", (req, res) => {
+    res.send("Server is running on Vercel!");
+});
+
 
 // http://localhost:8000/api/v1/users/register
 
