@@ -7,7 +7,7 @@ const app = express()
 app.use(express.static("public"))
 
 app.use(cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: 'https://nexsoit.netlify.app',
     // credentials: true
 }))
 
