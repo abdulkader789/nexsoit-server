@@ -29,11 +29,11 @@ import contactRouter from './routes/contact.routes.js'
 app.use("/api/v1/contact", contactRouter)
 
 // Serve static files (HTML, CSS)
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "../public")));
 
 // Define route for "/"
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "index.html"));
+    res.sendFile(path.join(__dirname, "../public", "index.html"));
 });
 
 
