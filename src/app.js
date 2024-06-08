@@ -28,9 +28,12 @@ import contactRouter from './routes/contact.routes.js'
 // app.use("/api/v1/users", userRouter)
 app.use("/api/v1/contact", contactRouter)
 
-// New root route for Vercel deployment
+// Serve static files (HTML, CSS)
+app.use(express.static(path.join(__dirname, "public")));
+
+// Define route for "/"
 app.get("/", (req, res) => {
-    res.send("Server is running on Vercel!");
+    res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 
