@@ -1,18 +1,17 @@
 import express from "express";
 import path from "path";
 import { app } from './src/app.js';
+import { fileURLToPath } from 'url'; // Import the fileURLToPath function
+
+const __filename = fileURLToPath(import.meta.url); // Get the current file's path
+const __dirname = path.dirname(__filename); // Get the directory name from the file's path
 
 const port = process.env.PORT || 3000;
 
-
 // Serve static files from the "public" directory
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve the index.jsx file as the root file
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "index.html"));
-});
-
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
